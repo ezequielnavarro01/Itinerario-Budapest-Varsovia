@@ -1,1 +1,481 @@
-# Itinerario-Budapest-Varsovia
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje Invierno 2026: Budapest & Varsovia</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1d3557;
+            --accent-color: #e63946;
+            --soft-gray: #f4f6f8;
+            --dark-text: #2b2d42;
+            --ticket-bg: #ffe3e3;
+            --ticket-text: #c1121f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
+
+        body { background-color: var(--soft-gray); color: var(--dark-text); padding-top: 60px; }
+
+        /* Pantalla de Selección (Inicio) */
+        #selector-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 2000; color: white; text-align: center;
+        }
+
+        #selector-screen h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        #selector-screen p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
+
+        .btn-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        
+        .city-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white; color: white; font-size: 1.2rem; font-weight: bold;
+            padding: 15px 40px; border-radius: 30px; cursor: pointer; backdrop-filter: blur(5px);
+            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .city-btn:hover { background: white; color: var(--primary-color); transform: translateY(-3px); }
+
+        /* Banner de Navegación */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; background: white;
+            display: flex; justify-content: center; gap: 10px; padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; flex-wrap: wrap;
+        }
+
+        .navbar a {
+            text-decoration: none; color: var(--primary-color); font-weight: bold;
+            font-size: 0.9rem; padding: 8px 15px; border-radius: 20px;
+            transition: 0.3s; border: 1px solid transparent; cursor: pointer;
+        }
+
+        .navbar a:hover, .navbar a.active { background: var(--primary-color); color: white; }
+        .navbar a.btn-back { background: var(--accent-color); color: white; }
+
+        /* Cabecera dinámica de la ciudad */
+        header {
+            height: 35vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; margin-bottom: 40px;
+            background-size: cover; background-position: center 30%; background-repeat: no-repeat;
+            transition: background 0.5s ease;
+            background-color: #4a6fa5;
+        }
+
+        header h1 { font-size: 3rem; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); margin-bottom: 5px; }
+        header p { font-size: 1.2rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.6); }
+
+        .container { max-width: 900px; margin: 0 auto 50px; padding: 0 15px; display: none; }
+
+        .day-card {
+            background: white; border-radius: 15px; padding: 30px; margin-bottom: 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-color);
+            display: none;
+        }
+
+        .day-card.is-active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .day-header {
+            display: flex; align-items: baseline; justify-content: space-between;
+            border-bottom: 2px solid var(--soft-gray); margin-bottom: 25px; padding-bottom: 10px;
+        }
+
+        .day-title { color: var(--primary-color); font-size: 1.8rem; }
+        .wake-up { font-size: 0.95rem; color: #777; font-weight: 500; }
+
+        .event-row { display: flex; margin-bottom: 20px; padding-left: 15px; border-left: 3px solid #d9dfec; }
+        .time-slot { min-width: 90px; font-weight: 800; color: var(--accent-color); font-size: 1.1rem; }
+        .description { flex: 1; font-size: 1rem; line-height: 1.5; color: #444; }
+        .description strong { color: var(--primary-color); display: block; margin-bottom: 4px; font-size: 1.15rem; }
+        .price-info { font-size: 0.85rem; color: #666; margin-top: 4px; display: block; font-style: italic; }
+
+        .tag { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; margin-left: 8px; vertical-align: middle; }
+        .ticket { background: var(--ticket-bg); color: var(--ticket-text); border: 1px solid #ffb3b3; }
+
+        /* Estilos para el plan sorpresa oculto */
+        .surprise-locked {
+            background-color: #f8f9fa;
+            border: 2px dashed var(--accent-color);
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .surprise-locked:hover {
+            background-color: var(--ticket-bg);
+            transform: scale(1.02);
+        }
+        .surprise-locked strong {
+            color: var(--accent-color) !important;
+            margin-bottom: 5px !important;
+            font-size: 1.2rem;
+        }
+        .surprise-hint {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .surprise-unlocked {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            padding: 10px;
+            background-color: #e8f4f8;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* ----- ESTILOS DEL POP-UP (MODAL) ----- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            z-index: 3000; display: none; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: white; padding: 30px; border-radius: 15px;
+            text-align: center; width: 90%; max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .close-modal {
+            position: absolute; top: 10px; right: 15px; font-size: 1.5rem;
+            cursor: pointer; color: #aaa; transition: 0.2s;
+        }
+        .close-modal:hover { color: var(--accent-color); }
+        
+        .modal-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .modal-content h3 { color: var(--primary-color); margin-bottom: 10px; font-size: 1.4rem; }
+        .modal-content p { color: #666; font-size: 0.95rem; margin-bottom: 15px; }
+        
+        .modal-content input {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;
+            text-align: center; outline: none; transition: 0.3s;
+        }
+        .modal-content input:focus { border-color: var(--primary-color); }
+        
+        .btn-submit {
+            background: var(--accent-color); color: white; border: none;
+            padding: 12px; border-radius: 8px; cursor: pointer;
+            font-weight: bold; width: 100%; font-size: 1rem; transition: 0.2s;
+        }
+        .btn-submit:hover { background: #c1121f; }
+        
+        .error-msg { 
+            color: var(--accent-color); font-size: 0.85rem; 
+            margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        .shake { animation: shake 0.3s; border-color: var(--accent-color) !important; }
+
+        @media (max-width: 600px) {
+            .navbar { gap: 5px; padding: 10px 5px; }
+            .navbar a { padding: 6px 10px; font-size: 0.75rem; }
+            .event-row { flex-direction: column; }
+            .time-slot { margin-bottom: 5px; }
+            #selector-screen h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Pantalla de Inicio -->
+<div id="selector-screen">
+    <h1>Viaje Invernal 2026</h1>
+    <p>Selecciona tu itinerario para comenzar</p>
+    <div class="btn-container">
+        <button class="city-btn" onclick="loadCity('budapest')">Budapest</button>
+        <button class="city-btn" onclick="loadCity('varsovia')">Varsovia</button>
+    </div>
+</div>
+
+<!-- POP-UP MODAL (Contraseña) -->
+<div id="password-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h3>Plan Secreto 🔒</h3>
+        <p>Introduce la contraseña para desvelar la sorpresa del planning.</p>
+        <input type="password" id="secret-password" placeholder="Contraseña..." onkeyup="checkEnter(event)">
+        <p id="modal-error" class="error-msg">Contraseña incorrecta </p>
+        <button class="btn-submit" onclick="verifyPassword()">Desbloquear ✨</button>
+    </div>
+</div>
+
+<!-- Navegación Budapest -->
+<nav class="navbar" id="nav-budapest" style="display: none;">
+    <a class="btn-back" onclick="showSelector()"><i class="fas fa-home"></i> Inicio</a>
+    <a onclick="showDay('b-dia1', 'budapest')" class="nav-b-dia1 active">LUNES 30</a>
+    <a onclick="showDay('b-dia2', 'budapest')" class="nav-b-dia2">MARTES 1</a>
+    <a onclick="showDay('b-dia3', 'budapest')" class="nav-b-dia3">MIÉRCOLES 2</a>
+    <a onclick="showDay('b-dia4', 'budapest')" class="nav-b-dia4">JUEVES 3</a>
+</nav>
+
+<!-- Navegación Varsovia -->
+<nav class="navbar" id="nav-varsovia" style="display: none;">
+    <a class="btn-back" onclick="showSelector()"><i class="fas fa-home"></i> Inicio</a>
+    <a onclick="showDay('v-dia1', 'varsovia')" class="nav-v-dia1 active">JUEVES 3</a>
+    <a onclick="showDay('v-dia2', 'varsovia')" class="nav-v-dia2">VIERNES 4</a>
+    <a onclick="showDay('v-dia3', 'varsovia')" class="nav-v-dia3">SÁBADO 5</a>
+</nav>
+
+<!-- Cabecera de la ciudad -->
+<header id="main-header" style="display: none;">
+    <h1 id="header-title"></h1>
+    <p id="header-subtitle"></p>
+</header>
+
+<!-- CONTENEDOR BUDAPEST -->
+<div class="container" id="container-budapest">
+    
+    <!-- LUNES -->
+    <section class="day-card" id="b-dia1">
+        <div class="day-header">
+            <h2 class="day-title">Lunes, 30 de noviembre</h2>
+            <span class="wake-up">Llegada a Hungría</span>
+        </div>
+        <div class="event-row"><div class="time-slot">13:25</div><div class="description"><strong>Llegada y Traslado <span class="tag ticket">ENTRADA</span></strong>Aterrizaje en BUD y traslado a Kálvin tér en Bus 100E o Taxi/Bolt.<span class="price-info">Bus 100E: ~2.200 HUF (5,50 €)</span></div></div>
+        <div class="event-row"><div class="time-slot">14:20</div><div class="description"><strong>Almuerzo en Smashy</strong>Smash burgers de moda en Baross utca 4. Directos con el equipaje.</div></div>
+        <div class="event-row"><div class="time-slot">15:00</div><div class="description"><strong>Check-in Marbles Residence</strong>Soltar equipaje, ropa de abrigo y listos para recorrer la ciudad.</div></div>
+        <div class="event-row"><div class="time-slot">15:30</div><div class="description"><strong>Groupama Aréna</strong>Metro M3 a Népliget. Estatua del águila gigante y Fradi Shop (Ferencváros).</div></div>
+        <div class="event-row"><div class="time-slot">16:20</div><div class="description"><strong>MOL Campus SkyDeck <span class="tag ticket">ENTRADA</span></strong>Mirador 360° a 120m para ver el atardecer y encendido de luces. Reserva recomendada 16:30 h.<span class="price-info">~4.500 HUF (12 €) - molcampusskydeck.hu</span></div></div>
+        <div class="event-row"><div class="time-slot">17:45</div><div class="description"><strong>Budapest Eye</strong>Paseo fotográfico por la plaza Erzsébet tér para ver la noria gigante iluminada.</div></div>
+        <div class="event-row"><div class="time-slot">18:15</div><div class="description"><strong>Mercado de Vörösmarty tér</strong>El gran mercado navideño. Parada dulce en Pichler Chimney Cake para el Kürtőskalács caliente.</div></div>
+        
+        <!-- PLAN SORPRESA 1 -->
+        <div class="event-row">
+            <div class="time-slot">19:30</div>
+            <div class="description" id="surprise-cinema">
+                <div class="surprise-locked" onclick="openPasswordModal('cinema')">
+                    <strong>PLAN SORPRESA 🔒</strong>
+                    <span class="surprise-hint">Toca para introducir contraseña secreta</span>
+                </div>
+                <div class="surprise-unlocked">
+                    <strong>Cinema Mystica & Jardín del Edén <span class="tag ticket">ENTRADA</span></strong>
+                    Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual increíble!
+                    <span class="price-info">~6.000 HUF (15 €) - cinemamystica.hu</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-row"><div class="time-slot">20:45</div><div class="description"><strong>Cena</strong>Puestos de Vörösmarty tér o Street Food Karaván (comida callejera).</div></div>
+        <div class="event-row"><div class="time-slot">21:30</div><div class="description"><strong>Szimpla Kert</strong>Copa en el ruin bar más famoso de Budapest.</div></div>
+    </section>
+
+    <!-- MARTES -->
+    <section class="day-card" id="b-dia2">
+        <div class="day-header">
+            <h2 class="day-title">Martes, 1 de diciembre</h2>
+            <span class="wake-up">Buda Monumental y Noche Mágica</span>
+        </div>
+        <div class="event-row"><div class="time-slot">08:30</div><div class="description"><strong>Puente de las Cadenas & Funicular <span class="tag ticket">ENTRADA</span></strong>Cruce a pie y subida panorámica en el funicular histórico.<span class="price-info">~4.500 HUF (12 €)</span></div></div>
+        <div class="event-row"><div class="time-slot">09:15</div><div class="description"><strong>Bastión de los Pescadores e Iglesia Matías</strong>Miradores góticos con vistas al Parlamento. (Interior iglesia opcional con entrada).</div></div>
+        <div class="event-row"><div class="time-slot">10:30</div><div class="description"><strong>Castillo de Buda & Várkert Bazár</strong>Paseo por murallas reales y descenso por jardines.</div></div>
+        <div class="event-row"><div class="time-slot">11:30</div><div class="description"><strong>Ciudadela y San Gerardo</strong>Ascenso a la colina Gellért para la mejor vista de todos los puentes.</div></div>
+        <div class="event-row"><div class="time-slot">13:00</div><div class="description"><strong>Mercado Central</strong>Descenso para ver los puestos tradicionales de páprika y salami.</div></div>
+        <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Basílica San Esteban & Mirador <span class="tag ticket">ENTRADA</span></strong>Subida a la cúpula panorámica 360° para ver el atardecer (aprox 15:30h).<span class="price-info">~3.500 HUF (9 €) - bazilika.biz</span></div></div>
+        <div class="event-row"><div class="time-slot">16:30</div><div class="description"><strong>Mercado Advent Basilica</strong>Espectáculo de Video Mapping 3D sobre la fachada del templo.</div></div>
+        <div class="event-row"><div class="time-slot">17:15</div><div class="description"><strong>Retro Lángos</strong>Merienda tradicional crujiente con crema agria y queso.</div></div>
+        <div class="event-row"><div class="time-slot">18:15</div><div class="description"><strong>Crucero Nocturno <span class="tag ticket">ENTRADA</span></strong>Paseo por el Danubio con monumentos iluminados. (Dock 10 / Pier 7).<span class="price-info">~5.000 HUF (14 €)</span></div></div>
+        <div class="event-row"><div class="time-slot">19:45</div><div class="description"><strong>Leo Rooftop</strong>Cóctel rápido en las alturas con vistas.</div></div>
+
+        <!-- PLAN SORPRESA 2 -->
+        <div class="event-row">
+            <div class="time-slot">20:45</div>
+            <div class="description" id="surprise-moon">
+                <div class="surprise-locked" onclick="openPasswordModal('moon')">
+                    <strong>PLAN SORPRESA 🔒</strong>
+                    <span class="surprise-hint">Toca para introducir contraseña secreta</span>
+                </div>
+                <div class="surprise-unlocked">
+                    <strong>Moon Budapest 🌙</strong>
+                    Gran Cita Sorpresa: Admirar la inmensa Luna gigante tomando un cóctel y un postre (sin menú completo).
+                    <span class="price-info">Reserva online indispensable - moonbudapest.hu</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MIERCOLES -->
+    <section class="day-card" id="b-dia3">
+        <div class="day-header">
+            <h2 class="day-title">Miércoles, 2 de diciembre</h2>
+            <span class="wake-up">Termas, Parlamento e Hielo</span>
+        </div>
+        <div class="event-row"><div class="time-slot">09:00</div><div class="description"><strong>Parque de la Ciudad (Városliget)</strong>Plaza Héroes, Castillo Vajdahunyad, House of Music, Rose Garden y Zsolnay Fountain.</div></div>
+        <div class="event-row"><div class="time-slot">10:30</div><div class="description"><strong>Baños Széchenyi <span class="tag ticket">ENTRADA</span></strong>Relax termal a 38°C en el exterior.<span class="price-info">~13.500 HUF (34 €) Cabina Privada - szechenyibath.hu</span></div></div>
+        <div class="event-row"><div class="time-slot">13:15</div><div class="description"><strong>Hari Kebab</strong>Almuerzo en uno de los mejores locales de döner de la ciudad.</div></div>
+        <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>New York Café</strong>Café y tarta en la cafetería más majestuosa. (Requiere reserva previa).</div></div>
+        <div class="event-row"><div class="time-slot">15:45</div><div class="description"><strong>Parlamento y Zapatos en el Danubio</strong>Hora dorada y encendido de focos de la fachada del Parlamento.</div></div>
+        <div class="event-row"><div class="time-slot">17:15</div><div class="description"><strong>Patinaje Nocturno <span class="tag ticket">ENTRADA</span></strong>City Park Ice Rink. Patinar de noche frente al castillo medieval iluminado.<span class="price-info">~6.000 HUF (15 €) con patines - mujegpalya.hu</span></div></div>
+        <div class="event-row"><div class="time-slot">19:30</div><div class="description"><strong>For Sale Pub</strong>Cena de despedida. Caldero gigante de goulash y suelo de paja.</div></div>
+    </section>
+
+    <!-- JUEVES -->
+    <section class="day-card" id="b-dia4">
+        <div class="day-header">
+            <h2 class="day-title">Jueves, 3 de diciembre</h2>
+            <span class="wake-up">Salida hacia Polonia</span>
+        </div>
+        <div class="event-row"><div class="time-slot">04:00</div><div class="description"><strong>Check-out & Traslado</strong>Desplazamiento al aeropuerto en Bolt o Bus 100E nocturno.</div></div>
+        <div class="event-row"><div class="time-slot">06:20</div><div class="description"><strong>Vuelo a Varsovia</strong>Despegue rumbo al siguiente destino.</div></div>
+    </section>
+</div>
+
+<!-- CONTENEDOR VARSOVIA (Vacío para rellenar) -->
+<div class="container" id="container-varsovia">
+    <section class="day-card" id="v-dia1">
+        <div class="day-header">
+            <h2 class="day-title">Jueves, 3 de diciembre</h2>
+            <span class="wake-up">Llegada a Polonia</span>
+        </div>
+        <div class="event-row"><div class="time-slot">07:45</div><div class="description"><strong>Aterrizaje en Varsovia</strong>Traslado al alojamiento...</div></div>
+        <div class="event-row"><div class="time-slot">--:--</div><div class="description"><strong>Planes por definir...</div>
+    </section>
+    
+    <section class="day-card" id="v-dia2">
+        <div class="day-header">
+            <h2 class="day-title">Viernes, 4 de diciembre</h2>
+        </div>
+        <div class="event-row"><div class="time-slot">--:--</div><div class="description"><strong>Planes por definir...</strong></div></div>
+    </section>
+
+    <section class="day-card" id="v-dia3">
+        <div class="day-header">
+            <h2 class="day-title">Sábado, 5 de diciembre</h2>
+        </div>
+        <div class="event-row"><div class="time-slot">--:--</div><div class="description"><strong>Planes por definir...</strong></div></div>
+    </section>
+</div>
+
+<script>
+    // Mostrar la pantalla de inicio
+    function showSelector() {
+        document.getElementById('selector-screen').style.display = 'flex';
+        document.getElementById('nav-budapest').style.display = 'none';
+        document.getElementById('nav-varsovia').style.display = 'none';
+        document.getElementById('main-header').style.display = 'none';
+        document.getElementById('container-budapest').style.display = 'none';
+        document.getElementById('container-varsovia').style.display = 'none';
+    }
+
+    // Cargar la ciudad seleccionada y solucionar el problema del fondo gris
+    function loadCity(city) {
+        document.getElementById('selector-screen').style.display = 'none';
+        document.getElementById('main-header').style.display = 'flex';
+        const header = document.getElementById('main-header');
+        const title = document.getElementById('header-title');
+        const subtitle = document.getElementById('header-subtitle');
+
+        if (city === 'budapest') {
+            document.getElementById('nav-budapest').style.display = 'flex';
+            document.getElementById('container-budapest').style.display = 'block';
+            
+            // Imagen garantizada del Parlamento de Budapest (reemplaza a la que daba fallo del fondo gris)
+            header.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1577366773073-a57cdf7132cb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')";
+            title.innerText = "BUDAPEST";
+            subtitle.innerText = "30 Noviembre - 3 Diciembre";
+            
+            showDay('b-dia1', 'budapest');
+        } else {
+            document.getElementById('nav-varsovia').style.display = 'flex';
+            document.getElementById('container-varsovia').style.display = 'block';
+            
+            // Imagen Centro histórico Varsovia
+            header.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607427293702-036933bbf746?auto=format&fit=crop&w=1920&q=80')";
+            title.innerText = "VARSOVIA";
+            subtitle.innerText = "3 Diciembre - En adelante";
+
+            showDay('v-dia1', 'varsovia');
+        }
+    }
+
+    // Mostrar un día específico y actualizar menú
+    function showDay(dayId, city) {
+        // Ocultar todos los días del contenedor de la ciudad activa
+        const container = document.getElementById(`container-${city}`);
+        const cards = container.querySelectorAll('.day-card');
+        cards.forEach(card => card.classList.remove('is-active'));
+        
+        // Quitar estado activo del menú
+        const nav = document.getElementById(`nav-${city}`);
+        const links = nav.querySelectorAll('a:not(.btn-back)');
+        links.forEach(link => link.classList.remove('active'));
+
+        // Mostrar el día seleccionado
+        document.getElementById(dayId).classList.add('is-active');
+        if (nav.querySelector(`.nav-${dayId}`)) {
+            nav.querySelector(`.nav-${dayId}`).classList.add('active');
+        }
+        
+        window.scrollTo(0, 0);
+    }
+
+    // ----- LÓGICA DEL POP-UP Y CONTRASEÑA -----
+    let currentSurpriseId = "";
+
+    function openPasswordModal(planId) {
+        currentSurpriseId = planId;
+        const modal = document.getElementById('password-modal');
+        const input = document.getElementById('secret-password');
+        const errorMsg = document.getElementById('modal-error');
+        
+        input.value = "";
+        input.classList.remove('shake');
+        errorMsg.style.display = 'none';
+        
+        modal.style.display = 'flex';
+        // Foco automático en el input al abrir
+        setTimeout(() => input.focus(), 100);
+    }
+
+    function closeModal() {
+        document.getElementById('password-modal').style.display = 'none';
+    }
+
+    function checkEnter(event) {
+        if (event.key === "Enter") {
+            verifyPassword();
+        }
+    }
+
+    function verifyPassword() {
+        const input = document.getElementById('secret-password');
+        const errorMsg = document.getElementById('modal-error');
+        
+        if (input.value.trim().toUpperCase() === "MONITO") {
+            // Contraseña correcta
+            closeModal();
+            const container = document.getElementById(`surprise-${currentSurpriseId}`);
+            container.querySelector('.surprise-locked').style.display = 'none';
+            container.querySelector('.surprise-unlocked').style.display = 'block';
+        } else {
+            // Contraseña incorrecta
+            errorMsg.style.display = 'block';
+            input.classList.remove('shake');
+            // Forzar reinicio de animación
+            void input.offsetWidth; 
+            input.classList.add('shake');
+            input.value = "";
+            input.focus();
+        }
+    }
+</script>
+
+</body>
+</html>
