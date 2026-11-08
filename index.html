@@ -13,6 +13,10 @@
 --dark-text: #2b2d42;
 --ticket-bg: #ffe3e3;
 --ticket-text: #c1121f;
+--confirmed-bg: #d4edda;
+--confirmed-text: #155724;
+--pending-bg: #fff3cd;
+--pending-text: #856404;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
@@ -99,6 +103,8 @@ border-bottom: 2px solid var(--soft-gray); margin-bottom: 25px; padding-bottom: 
 
 .tag { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; margin-left: 8px; vertical-align: middle; }
 .ticket { background: var(--ticket-bg); color: var(--ticket-text); border: 1px solid #ffb3b3; }
+.confirmed { background: var(--confirmed-bg); color: var(--confirmed-text); border: 1px solid #c3e6cb; }
+.pending { background: var(--pending-bg); color: var(--pending-text); border: 1px solid #ffeeba; }
 
 /* Estilos para el plan sorpresa oculto */
 .surprise-locked {
@@ -247,12 +253,12 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 <h2 class="day-title">Lunes, 30 de noviembre</h2>
 <span class="wake-up">Llegada a Hungría</span>
 </div>
-<div class="event-row"><div class="time-slot">13:25</div><div class="description"><strong>Llegada y Traslado <span class="tag ticket">ENTRADA</span></strong>Aterrizaje en BUD y traslado a Kálvin tér en Bus 100E o Taxi/Bolt.<span class="price-info">Bus 100E: ~2.200 HUF (5,50 €)</span></div></div>
+<div class="event-row"><div class="time-slot">13:25</div><div class="description"><strong>Llegada y Traslado</strong>Aterrizaje en BUD y traslado a Kálvin tér en Bus 100E o Taxi/Bolt.<span class="price-info">Bus 100E: ~2.200 HUF (5,50 €)</span></div></div>
 <div class="event-row"><div class="time-slot">14:20</div><div class="description"><strong>Almuerzo en Smashy</strong>Smash burgers de moda en Baross utca 4. Directos con el equipaje.</div></div>
 <div class="event-row"><div class="time-slot">15:00</div><div class="description"><strong>Check-in Marbles Residence</strong>Soltar equipaje y ropa de abrigo.</div></div>
 <div class="event-row"><div class="time-slot">15:15</div><div class="description"><strong>Corvin Plaza</strong>Visita rápida al centro comercial situado justo al lado del alojamiento antes de que cierre a las 20:00 h.</div></div>
 <div class="event-row"><div class="time-slot">15:30</div><div class="description"><strong>Groupama Aréna</strong>Metro M3 a Népliget. Estatua del águila gigante y Fradi Shop (Ferencváros).</div></div>
-<div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>MOL Campus SkyDeck <span class="tag ticket">ENTRADA</span></strong>Mirador 360° a 120m para ver el atardecer y encendido de luces.<span class="price-info">~4.500 HUF (12 €) - molcampusskydeck.hu</span></div></div>
+<div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>MOL Campus SkyDeck <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Mirador 360° a 120m para ver el atardecer y encendido de luces.<span class="price-info">~4.500 HUF (12 €) - molcampusskydeck.hu</span></div></div>
 <div class="event-row"><div class="time-slot">17:30</div><div class="description"><strong>Pichler Chimney Cake & Gelato</strong>Meriendita</div></div>
 <div class="event-row"><div class="time-slot">17:45</div><div class="description"><strong>Budapest Eye</strong>Paseo fotográfico por la plaza Erzsébet tér para ver la noria gigante iluminada.</div></div>
 <div class="event-row"><div class="time-slot">18:15</div><div class="description"><strong>Mercado de Vörösmarty tér</strong>El gran mercado navideño. Parada dulce en Pichler Chimney Cake para el Kürtőskalács caliente.</div></div>
@@ -266,7 +272,7 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 <span class="surprise-hint">Toca para introducir la contraseña secreta</span>
 </div>
 <div class="surprise-unlocked">
-<strong>Cinema Mystica & Jardín del Edén <span class="tag ticket">ENTRADA</span></strong>
+<strong>Cinema Mystica & Jardín del Edén <span class="tag confirmed">RESERVA COMPLETADA</span></strong>
 Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual increíble!
 <span class="price-info">~6.000 HUF (15 €) - cinemamystica.hu</span>
 </div>
@@ -284,19 +290,19 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
             <span class="wake-up">Buda, Tren de los Niños, Isla Margarita y Tarde Mágica</span>
         </div>
         <div class="event-row"><div class="time-slot">08:30</div><div class="description"><strong>Salida del apartamento</strong>Paseo tranquilo hacia la orilla de Buda.</div></div>
-        <div class="event-row"><div class="time-slot">08:45</div><div class="description"><strong>Puente de las Cadenas & Funicular <span class="tag ticket">ENTRADA</span></strong>Cruce a pie y subida panorámica en el funicular histórico (*Budavári Sikló*).<span class="price-info">~4.500 HUF (12 €)</span></div></div>
+        <div class="event-row"><div class="time-slot">08:45</div><div class="description"><strong>Puente de las Cadenas</strong>Cruce a pie hacia la orilla de Buda.</div></div>
         <div class="event-row"><div class="time-slot">09:15</div><div class="description"><strong>Bastión de los Pescadores & Iglesia de Matías</strong>Miradores góticos con vistas despejadas al Parlamento y la mejor luz de la mañana.</div></div>
         <div class="event-row"><div class="time-slot">10:15</div><div class="description"><strong>Castillo de Buda & Patios Reales</strong>Paseo por los exteriores, la fuente de Matías y las terrazas panorámicas del palacio.</div></div>
         <div class="event-row"><div class="time-slot">11:15</div><div class="description"><strong>Desplazamiento a Széchenyi-hegy</strong>Trayecto en transporte público desde la zona del Castillo hacia la estación sur del trenecito.</div></div>
-        <div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Tren de los Niños (Gyermekvasút) <span class="tag ticket">ENTRADA</span></strong>Subida al tren histórico para hacer el recorrido de solo ida atravesando los bosques de Buda.<span class="price-info">~2.000 HUF (5 €)</span></div></div>
+        <div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Tren de los Niños (Gyermekvasút) <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Subida al tren histórico (Entrada en físico) para hacer el recorrido de solo ida atravesando los bosques de Buda.<span class="price-info">~2.000 HUF (5 €)</span></div></div>
         <div class="event-row"><div class="time-slot">12:50</div><div class="description"><strong>Llegada a Hűvösvölgy</strong>Fin del trayecto en la estación norte del trenecito.</div></div>
         <div class="event-row"><div class="time-slot">13:05</div><div class="description"><strong>Desplazamiento a Isla Margarita</strong>Transporte público directo desde Hűvösvölgy hacia la entrada norte de la isla.</div></div>
         <div class="event-row"><div class="time-slot">13:30</div><div class="description"><strong>Paseo por la Isla Margarita</strong>Recorrido relajado bajando desde el norte hacia el sur para disfrutar de sus jardines.</div></div>
         <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Almuerzo: Retro Lángos</strong>Parada para comer un auténtico lángos frito bien contundente con crema agria, ajo y queso.</div></div>
         <div class="event-row"><div class="time-slot">15:30</div><div class="description"><strong>Colina Gellért y La Ciudadela (Tarde)</strong>Ascenso tranquilo hacia la parte alta para hacer la digestión viendo las vistas panorámicas con el sol de la tarde.</div></div>
         <div class="event-row"><div class="time-slot">16:45</div><div class="description"><strong>Mercado Advent Basilica</strong>Bajada al centro de Pest para ver el ambiente navideño en la plaza de la Basílica y el espectáculo de Video Mapping 3D.</div></div>
-        <div class="event-row"><div class="time-slot">17:30</div><div class="description"><strong>MERIENDA: 2D Beloved Café o The Magic Budapest <span class="tag ticket">RESERVA EN THE MAGIC</span></strong>Parada dulce para elegir entre las tortitas 2D en estilo cómic o las pócimas y gofres del lugar inspirado en Harry Potter.</div></div>
-        <div class="event-row"><div class="time-slot">18:15</div><div class="description"><strong>Crucero Nocturno <span class="tag ticket">ENTRADA</span></strong>Paseo por el Danubio con monumentos iluminados. (Dock 10 / Pier 7).<span class="price-info">~5.000 HUF (14 €)</span></div></div>
+        <div class="event-row"><div class="time-slot">17:30</div><div class="description"><strong>MERIENDA: 2D Beloved Café</strong>Parada dulce para elegir entre las tortitas 2D en estilo cómic.</div></div>
+        <div class="event-row"><div class="time-slot">18:15</div><div class="description"><strong>Crucero Nocturno <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Paseo por el Danubio con monumentos iluminados. (Dock 10 / Pier 7).<span class="price-info">~5.000 HUF (14 €)</span></div></div>
 
         <!-- PLAN SORPRESA 2 -->
         <div class="event-row">
@@ -328,8 +334,8 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Gran Mercado Central (Nagy Vásárcsarnok)</strong>Paseo por sus dos plantas para ver el ambiente, artesanía y páprika húngara.</div></div>
 <div class="event-row"><div class="time-slot">13:15</div><div class="description"><strong>Hari Kebab</strong>Almuerzo en uno de los mejores locales de döner de la zona sur/centro.</div></div>
 <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Parlamento y Zapatos en el Danubio</strong>Hora dorada y encendido de focos de la fachada del Parlamento. TREN LINEA 2 para ver bonitas vistas del Parlamento</div></div>
-<div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>New York Café</strong>Café y tarta en la cafetería más majestuosa. (Requiere reserva previa).</div></div>
-<div class="event-row"><div class="time-slot">17:15</div><div class="description"><strong>Patinaje Nocturno <span class="tag ticket">ENTRADA</span></strong>City Park Ice Rink. Patinar de noche frente al castillo medieval iluminado.<span class="price-info">~6.000 HUF (15 €) con patines - mujegpalya.hu</span></div></div>
+<div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>New York Café <span class="tag pending">RESERVA PENDIENTE</span></strong>Café y tarta en la cafetería más majestuosa.</div></div>
+<div class="event-row"><div class="time-slot">17:15</div><div class="description"><strong>Patinaje Nocturno <span class="tag confirmed">RESERVA COMPLETADA</span></strong>City Park Ice Rink (Entrada en físico). Patinar de noche frente al castillo medieval iluminado.<span class="price-info">~6.000 HUF (15 €) con patines - mujegpalya.hu</span></div></div>
 <div class="event-row"><div class="time-slot">19:30</div><div class="description"><strong>For Sale Pub</strong>Cena de despedida. Caldero gigante de goulash y suelo de paja.</div></div>
 </section>
 </div>
@@ -343,15 +349,15 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <h2 class="day-title">Jueves, 3 de diciembre</h2>
 <span class="wake-up">Llegada, Old Town, Barbacana, Santa Ana, Castillo Real, Gueto Wall y Varso Tower</span>
 </div>
-<div class="event-row"><div class="time-slot">07:35</div><div class="description"><strong>Aterrizaje en Varsovia y Traslado <span class="tag ticket">TRANSPORTE</span></strong>Aterrizaje en el aeropuerto Chopin (WAW). Tren S2/RL hasta Warszawa Centralna (~4,40 PLN / ~1 €) o Bolt/Taxi directo al Master Wola (~25-45 PLN / 6-10 €).<span class="price-info">Tren: ~1 € | Bolt/Taxi: ~6-10 €</span></div></div>
+<div class="event-row"><div class="time-slot">07:35</div><div class="description"><strong>Aterrizaje en Varsovia y Traslado</strong>Aterrizaje en el aeropuerto Chopin (WAW). Tren S2/RL hasta Warszawa Centralna (~4,40 PLN / ~1 €) o Bolt/Taxi directo al Master Wola (~25-45 PLN / 6-10 €).<span class="price-info">Tren: ~1 € | Bolt/Taxi: ~6-10 €</span></div></div>
 <div class="event-row"><div class="time-slot">09:30</div><div class="description"><strong>Master Wola</strong>Llegada al alojamiento, gestión de maletas y toma de contacto.</div></div>
 <div class="event-row"><div class="time-slot">10:00</div><div class="description"><strong>Old Town y Catedral</strong>Paseo por el Casco Histórico (*Stare Miasto*) y la **Catedral de Varsovia**.</div></div>
 <div class="event-row"><div class="time-slot">11:00</div><div class="description"><strong>Barbacana</strong>Visita a la imponente Barbacana y recorrido por las murallas históricas medievales.</div></div>
 <div class="event-row"><div class="time-slot">11:45</div><div class="description"><strong>Calle Krakowskie Przedmieście</strong>Recorrido por una de las avenidas más elegantes y monumentales de la ciudad.</div></div>
-<div class="event-row"><div class="time-slot">12:30</div><div class="description"><strong>Mirador de la Iglesia de Santa Ana <span class="tag ticket">ENTRADA</span></strong>Subida a la torre para disfrutar de las mejores vistas panorámicas del casco antiguo.<span class="price-info">~10 PLN (2,30 €) - En taquilla</span></div></div>
+<div class="event-row"><div class="time-slot">12:30</div><div class="description"><strong>Mirador de la Iglesia de Santa Ana <span class="tag ticket">ENTRADA FÍSICA</span></strong>Subida a la torre (Entrada en físico) para disfrutar de las mejores vistas panorámicas del casco antiguo.<span class="price-info">~10 PLN (2,30 €) - En taquilla</span></div></div>
 <div class="event-row"><div class="time-slot">13:30</div><div class="description"><strong>Castillo Real</strong>Paseo por la Plaza del Castillo y exteriores del majestuoso **Castillo Real de Varsovia**.</div></div>
 <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Almuerzo Tradicional</strong>Comida a base de deliciosos *pierogi* polacos en el centro histórico.</div></div>
-<div class="event-row"><div class="time-slot">15:00</div><div class="description"><strong>Highline Warsaw (Varso Tower) <span class="tag ticket">ENTRADA</span></strong>Atardecer y hora dorada a más de 230 metros de altura en el mirador del rascacielos más alto de la UE.<span class="price-info">~45-50 PLN (11-12 €) - varsotower.com</span></div></div>
+<div class="event-row"><div class="time-slot">15:00</div><div class="description"><strong>Highline Warsaw (Varso Tower) <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Atardecer y hora dorada a más de 230 metros de altura en el mirador del rascacielos más alto de la UE.<span class="price-info">~45-50 PLN (11-12 €) - varsotower.com</span></div></div>
 <div class="event-row"><div class="time-slot">16:30</div><div class="description"><strong>Gueto Wall</strong>Breve visita a los fragmentos históricos del Muro del Gueto en la calle Złota / Sienna.</div></div>
 <div class="event-row"><div class="time-slot">18:30</div><div class="description"><strong>Jarmark Bożonarodzeniowy</strong>Visita nocturna al gran mercadillo navideño del *Plac Defilad* (junto al Palacio de Cultura) y el de la Plaza del Mercado.</div></div>
 <div class="event-row"><div class="time-slot">20:00</div><div class="description"><strong>Cena y Descanso</strong>Cena tranquila y vuelta al apartamento.</div></div>
@@ -371,7 +377,7 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">16:15</div><div class="description"><strong>Elektrownia Powiśle</strong>Recorrido por la antigua central eléctrica reconvertida en zona comercial y de ocio.</div></div>
 <div class="event-row"><div class="time-slot">16:45</div><div class="description"><strong>Pasarela Peatonal del Vístula</strong>Cruce del río a pie hacia el distrito oriental de Praga.</div></div>
 <div class="event-row"><div class="time-slot">17:30</div><div class="description"><strong>Park Praski y Catedral de San Florián</strong>Paseo por el parque y visita a la imponente iglesia neogótica de ladrillo rojo con iluminación nocturna.</div></div>
-<div class="event-row"><div class="time-slot">19:00</div><div class="description"><strong>Pista de Patinaje sobre Hielo <span class="tag ticket">ENTRADA</span></strong>Patinaje al aire libre y ambiente navideño nocturno en la Plaza del Mercado.<span class="price-info">~20-30 PLN (5-7 €) con alquiler de patines</span></div></div>
+<div class="event-row"><div class="time-slot">19:00</div><div class="description"><strong>Pista de Patinaje sobre Hielo <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Patinaje al aire libre (Entrada en físico) y ambiente navideño nocturno en la Plaza del Mercado.<span class="price-info">~20-30 PLN (5-7 €) con alquiler de patines</span></div></div>
 <div class="event-row"><div class="time-slot">20:15</div><div class="description"><strong>Cena y Descanso</strong>Cena de despedida por la zona y descanso en el apartamento.</div></div>
 </section>
 
@@ -381,11 +387,11 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <h2 class="day-title">Sábado, 5 de diciembre</h2>
 <span class="wake-up">Excursión a Cracovia sin mochilas y Navidad</span>
 </div>
-<div class="event-row"><div class="time-slot">07:20</div><div class="description"><strong>Tren Varsovia - Cracovia <span class="tag ticket">ENTRADA</span></strong>Salida en tren de alta velocidad desde *Warszawa Centralna* hasta *Kraków Główny* (Llegada a las 10:15 h).</div></div>
+<div class="event-row"><div class="time-slot">07:20</div><div class="description"><strong>Tren Varsovia - Cracovia <span class="tag confirmed">RESERVA COMPLETA</span></strong>Salida en tren de alta velocidad desde *Warszawa Centralna* hasta *Kraków Główny* (Llegada a las 10:15 h).</div></div>
 <div class="event-row"><div class="time-slot">10:15</div><div class="description"><strong>Llegada a Cracovia</strong>Salida directa y ligera de la estación (sin mochilas) hacia el casco antiguo.</div></div>
 <div class="event-row"><div class="time-slot">10:30</div><div class="description"><strong>Calle Floriańska</strong>Entrada al centro cruzando por esta histórica y animada calle comercial.</div></div>
 <div class="event-row"><div class="time-slot">10:45</div><div class="description"><strong>El Trío del Centro</strong>Paseo por la gran Plaza del Mercado (*Rynek Główny*), la coqueta plaza *Mały Rynek* y visita a la **Basílica de Santa María**.</div></div>
-<div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Torre del Ayuntamiento <span class="tag ticket">ENTRADA</span></strong>Subida a la torre para disfrutar de las mejores vistas cenitales de la plaza medieval.<span class="price-info">~15 PLN (3,50 €) - En taquilla</span></div></div>
+<div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Torre del Ayuntamiento <span class="tag ticket">ENTRADA FÍSICA</span></strong>Subida a la torre (Entrada en físico) para disfrutar de las mejores vistas cenitales de la plaza medieval.<span class="price-info">~15 PLN (3,50 €) - En taquilla</span></div></div>
 <div class="event-row"><div class="time-slot">13:00</div><div class="description"><strong>Paseo por el Planty</strong>Recorrido por el característico anillo verde que abraza todo el casco antiguo.</div></div>
 <div class="event-row"><div class="time-slot">13:30</div><div class="description"><strong>Castillo de Wawel</strong>Subida a la colina, paseo por los patios exteriores y vistas al río Vístula desde los miradores.</div></div>
 <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Almuerzo Tradicional</strong>Comida a base de platos típicos polacos en un mesón del centro.</div></div>
@@ -393,7 +399,7 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">16:45</div><div class="description"><strong>Magia Navideña y Atardecer</strong>Vuelta hacia el centro con la noche cerrada para disfrutar a fondo del **Mercadillo Navideño** en la Plaza del Mercado y sus luces.</div></div>
 <div class="event-row"><div class="time-slot">18:00</div><div class="description"><strong>Paseo hacia la Estación</strong>Recorrido corto y directo desde la zona centro hacia la estación *Kraków Główny*.</div></div>
 <div class="event-row"><div class="time-slot">18:20</div><div class="description"><strong>Llegada a la Estación</strong>Llegada exacta con 25 minutos de margen antes de la salida del tren.</div></div>
-<div class="event-row"><div class="time-slot">18:45</div><div class="description"><strong>Tren de Regreso a Varsovia</strong>Trayecto de vuelta directo desde Cracovia hacia Varsovia.</div></div>
+<div class="event-row"><div class="time-slot">18:45</div><div class="description"><strong>Tren de Regreso a Varsovia <span class="tag confirmed">RESERVA COMPLETA</span></strong>Trayecto de vuelta directo desde Cracovia hacia Varsovia.</div></div>
 </section>
 </div>
 
