@@ -202,7 +202,7 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 
 <!-- Pantalla de Inicio -->
 <div id="selector-screen">
-<h1>Viaje Invernal 2026</h1>
+<h1>Viaje Invierno 2026</h1>
 <p>Selecciona tu itinerario para comenzar</p>
 <div class="btn-container">
 <button class="city-btn" onclick="loadCity('budapest')">Budapest</button>
@@ -228,6 +228,7 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 <a onclick="showDay('b-dia1', 'budapest')" class="nav-b-dia1 active">LUNES 30</a>
 <a onclick="showDay('b-dia2', 'budapest')" class="nav-b-dia2">MARTES 1</a>
 <a onclick="showDay('b-dia3', 'budapest')" class="nav-b-dia3">MIÉRCOLES 2</a>
+<a onclick="showDay('b-alt', 'budapest')" class="nav-b-alt">PLANES EXTRA</a>
 </nav>
 
 <!-- Navegación Varsovia -->
@@ -259,7 +260,7 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 <div class="event-row"><div class="time-slot">15:15</div><div class="description"><strong>Corvin Plaza</strong>Visita rápida al centro comercial situado justo al lado del alojamiento antes de que cierre a las 20:00 h.</div></div>
 <div class="event-row"><div class="time-slot">15:30</div><div class="description"><strong>Groupama Aréna</strong>Metro M3 a Népliget. Estatua del águila gigante y Fradi Shop (Ferencváros).</div></div>
 <div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>MOL Campus SkyDeck <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Mirador 360° a 120m para ver el atardecer y encendido de luces.<span class="price-info">~4.500 HUF (12 €) - molcampusskydeck.hu</span></div></div>
-<div class="event-row"><div class="time-slot">17:30</div><div class="description"><strong>Pichler Chimney Cake & Gelato</strong>Meriendita</div></div>
+<div class="event-row"><div class="time-slot">17:15</div><div class="description"><strong>Calle Vitéz utca (Oso Paddington)</strong>Breve parada en la calle lateral en Buda para ver la famosa estatua del oso Paddington asomándose.</div></div>
 <div class="event-row"><div class="time-slot">17:45</div><div class="description"><strong>Budapest Eye</strong>Paseo fotográfico por la plaza Erzsébet tér para ver la noria gigante iluminada.</div></div>
 <div class="event-row"><div class="time-slot">18:15</div><div class="description"><strong>Mercado de Vörösmarty tér</strong>El gran mercado navideño. Parada dulce en Pichler Chimney Cake para el Kürtőskalács caliente.</div></div>
 
@@ -292,14 +293,15 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
         <div class="event-row"><div class="time-slot">08:30</div><div class="description"><strong>Salida del apartamento</strong>Paseo tranquilo hacia la orilla de Buda.</div></div>
         <div class="event-row"><div class="time-slot">08:45</div><div class="description"><strong>Puente de las Cadenas</strong>Cruce a pie hacia la orilla de Buda.</div></div>
         <div class="event-row"><div class="time-slot">09:15</div><div class="description"><strong>Bastión de los Pescadores & Iglesia de Matías</strong>Miradores góticos con vistas despejadas al Parlamento y la mejor luz de la mañana.</div></div>
-        <div class="event-row"><div class="time-slot">10:15</div><div class="description"><strong>Castillo de Buda & Patios Reales</strong>Paseo por los exteriores, la fuente de Matías y las terrazas panorámicas del palacio.</div></div>
+        <div class="event-row"><div class="time-slot">10:00</div><div class="description"><strong>Cambio de Guardia</strong>Parada frente al Palacio Sándor para presenciar el relevo de la guardia presidencial.</div></div>
+        <div class="event-row"><div class="time-slot">10:30</div><div class="description"><strong>Castillo de Buda & Patios Reales</strong>Paseo por los exteriores, la fuente de Matías y las terrazas panorámicas del palacio.</div></div>
         <div class="event-row"><div class="time-slot">11:15</div><div class="description"><strong>Desplazamiento a Széchenyi-hegy</strong>Trayecto en transporte público desde la zona del Castillo hacia la estación sur del trenecito.</div></div>
         <div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Tren de los Niños (Gyermekvasút) <span class="tag ticket">ENTRADA FÍSICA</span></strong>Subida al tren histórico (Entrada en físico) para hacer el recorrido de solo ida atravesando los bosques de Buda.<span class="price-info">~2.000 HUF (5 €)</span></div></div>
         <div class="event-row"><div class="time-slot">12:50</div><div class="description"><strong>Llegada a Hűvösvölgy</strong>Fin del trayecto en la estación norte del trenecito.</div></div>
         <div class="event-row"><div class="time-slot">13:05</div><div class="description"><strong>Desplazamiento a Isla Margarita</strong>Transporte público directo desde Hűvösvölgy hacia la entrada norte de la isla.</div></div>
         <div class="event-row"><div class="time-slot">13:30</div><div class="description"><strong>Paseo por la Isla Margarita</strong>Recorrido relajado bajando desde el norte hacia el sur para disfrutar de sus jardines.</div></div>
         <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Almuerzo: Retro Lángos</strong>Parada para comer un auténtico lángos frito bien contundente con crema agria, ajo y queso.</div></div>
-        <div class="event-row"><div class="time-slot">15:30</div><div class="description"><strong>Colina Gellért y La Ciudadela (Tarde)</strong>Ascenso tranquilo hacia la parte alta para hacer la digestión viendo las vistas panorámicas con el sol de la tarde.</div></div>
+        <div class="event-row"><div class="time-slot">15:30</div><div class="description"><strong>Colina Gellért, Mirador y La Ciudadela</strong>Ascenso hacia la parte alta disfrutando del mirador panorámico de la colina (el famoso balcón de piedra con vistas al Puente de la Libertad) antes de llegar a la Ciudadela.</div></div>
         <div class="event-row"><div class="time-slot">16:45</div><div class="description"><strong>Mercado Advent Basilica</strong>Bajada al centro de Pest para ver el ambiente navideño en la plaza de la Basílica y el espectáculo de Video Mapping 3D.</div></div>
         <div class="event-row"><div class="time-slot">17:30</div><div class="description"><strong>MERIENDA: 2D Beloved Café</strong>Parada dulce para elegir entre las tortitas 2D en estilo cómic.</div></div>
         <div class="event-row"><div class="time-slot">18:40</div><div class="description"><strong>Crucero Nocturno <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Paseo por el Danubio con monumentos iluminados. (Dock 10 / Pier 7).<span class="price-info">~5.000 HUF (14 €)</span></div></div>
@@ -336,8 +338,28 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Parlamento y Zapatos en el Danubio</strong>Hora dorada y encendido de focos de la fachada del Parlamento. TREN LINEA 2 para ver bonitas vistas del Parlamento</div></div>
 <div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>New York Café <span class="tag confirmed">RESERVA COMPLETADA</span></strong>Café y tarta en la cafetería más majestuosa.</div></div>
 <div class="event-row"><div class="time-slot">17:15</div><div class="description"><strong>Patinaje Nocturno <span class="tag ticket">ENTRADA FÍSICA</span></strong>City Park Ice Rink (Entrada en físico). Patinar de noche frente al castillo medieval iluminado.<span class="price-info">~6.000 HUF (15 €) con patines - mujegpalya.hu</span></div></div>
+<div class="event-row"><div class="time-slot">19:00</div><div class="description"><strong>Mirador del Parlamento a la Noche</strong>Paseo por la orilla opuesta (Batythány tér) para contemplar el imponente edificio del Parlamento totalmente iluminado de noche reflejándose en el Danubio.</div></div>
 <div class="event-row"><div class="time-slot">19:30</div><div class="description"><strong>For Sale Pub</strong>Cena de despedida. Caldero gigante de goulash y suelo de paja.</div></div>
 </section>
+
+<!-- PLANES ALTERNATIVOS / EXTRA BUDAPEST -->
+<section class="day-card" id="b-alt">
+<div class="day-header">
+<h2 class="day-title">Planes Alternativos & Extras</h2>
+<span class="wake-up">Sugerencias y paradas opcionales en Budapest</span>
+</div>
+<div class="event-row"><div class="time-slot">TRAM 2</div><div class="description"><strong>Tranvía Panorámico (Línea 2)</strong>Considerado uno de los trayectos en tranvía más bonitos del mundo por ir pegado al Danubio. <em>Cómo y dónde:</em> Cójelo en la parada <strong>Kossuth Lajos tér</strong> (junto al Parlamento) o <strong>Vigadó tér</strong>, y bájate en <strong>Széchenyi István tér</strong> para disfrutar de las mejores vistas del río y los puentes.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 1</div><div class="description"><strong>Cookie Beacon Brunch Basilica</strong>Brunch especializado en galletas y dulces. <em>Sugerencia de encaje:</em> Ideal para la mañana del miércoles 2 de diciembre antes de empezar la ruta hacia el Parque de la Ciudad, o como alternativa al desayuno de cualquier día por la zona centro.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 2</div><div class="description"><strong>Ópera Nacional de Hungría & Gran Sinagoga</strong>Paseo arquitectónico exterior por dos de los monumentos más emblemáticos de Pest. <em>Sugerencia de encaje:</em> Se pueden encajar perfectamente en la tarde del lunes 30 de noviembre (en el trayecto entre el Budapest Eye y el mercado de Vörösmarty tér) o combinándolas de camino al New York Café el miércoles 2 de diciembre.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 3</div><div class="description"><strong>Déryné Bakery</strong>Cafetería y obrador artesanal de gran prestigio en Buda. <em>Sugerencia de encaje:</em> Una parada perfecta para desayunar fuerte o merendar justo el martes 1 de diciembre tras bajar de la zona del Bastión de los Pescadores y el Castillo de Buda, antes de coger el transporte hacia el Tren de los Niños.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 4</div><div class="description"><strong>CookieSpace</strong>Espacio especializado en galletas y repostería creativa en Budapest. <em>Sugerencia de encaje:</em> Una parada dulce fantástica para intercalar como merienda por el centro de Pest o durante el recorrido por las calles comerciales.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 5</div><div class="description"><strong>Kürtissimo: Artisan Chimney & Gelato House</strong>Especialistas en tradicionales *kürtőskalács* (pastel chimenea) combinados con helados y otras delicias artesanales. <em>Sugerencia de encaje:</em> Una excelente alternativa para disfrutar de un dulce típico recién hecho caliente mientras paseáis por el centro de Pest o visitáis los mercadillos navideños.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 6</div><div class="description"><strong>Begi Coffee & Cake</strong>Cafetería acogedora ideal para una parada de café de especialidad y repostería. <em>Sugerencia de encaje:</em> Perfecta para cualquier mañana o pausa de media tarde en el centro de Pest.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 7</div><div class="description"><strong>Bálna (El Centro de la Ballena)</strong>Impresionante centro cultural y comercial con una arquitectura vanguardista en forma de ballena a orillas del Danubio. <em>Sugerencia de encaje:</em> Ideal para visitarlo por la tarde mientras camináis junto al río o combinándolo con la ruta del tranvía panorámico (Línea 2), ya que pasa justo por delante.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 8</div><div class="description"><strong>Souvenir and Coffee / Department of Travel</strong>Curiosa tienda-cafetería de concepto original en Budapest que mezcla recuerdos de viajes con café de especialidad. <em>Sugerencia de encaje:</em> Perfecta para echar un vistazo a detalles originales o tomar algo durante vuestros paseos por el centro de Pest.</div></div>
+<div class="event-row"><div class="time-slot">IDEA 9</div><div class="description"><strong>Zara</strong>Tienda de moda de la marca para echar un vistazo rápido o compras de última hora. <em>Sugerencia de encaje:</em> Tienes locales muy céntricos (como en la famosa calle Váci utca o en Deák Ferenc tér) ideales para pasar si os hace falta algo o queréis cotillear.</div></div>
+</section>
+
 </div>
 
 <!-- CONTENEDOR VARSOVIA -->
