@@ -253,6 +253,7 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 <a onclick="showDay('v-dia1', 'varsovia')" class="nav-v-dia1 active">JUEVES 3</a>
 <a onclick="showDay('v-dia2', 'varsovia')" class="nav-v-dia2">VIERNES 4</a>
 <a onclick="showDay('v-dia3', 'varsovia')" class="nav-v-dia3">SÁBADO 5</a>
+<a onclick="showDay('v-cafes', 'varsovia')" class="nav-v-cafes">BARES & CAFÉS</a>
 </nav>
 
 <!-- Cabecera de la ciudad -->
@@ -502,119 +503,9 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">12:00</div><div class="description"><strong>Torre del Ayuntamiento <span class="tag ticket">ENTRADA FÍSICA</span></strong>Subida a la torre (Entrada en físico) para disfrutar de las mejores vistas cenitales de la plaza medieval.<span class="price-info">~15 PLN (3,50 €) - En taquilla</span></div></div>
 <div class="event-row"><div class="time-slot">13:00</div><div class="description"><strong>Paseo por el Planty</strong>Recorrido por el característico anillo verde que abraza todo el casco antiguo.</div></div>
 <div class="event-row"><div class="time-slot">13:30</div><div class="description"><strong>Castillo de Wawel</strong>Subida a la colina, paseo por los patios exteriores y vistas al río Vístula desde los miradores.</div></div>
-<div class="event-row"><div class="time-slot">14:30</div><div class="description"><strong>Almuerzo Tradicional</strong>Comida a base de platos típicos polacos en un mesón del centro.</div></div>
+<div class="event-row"><div class="time-slot">14:10</div><div class="description"><strong>Plac Nowy & Zapiekanki (Krakowski Piecyk)</strong>Paseo por el corazón del barrio judío (Kazimierz) para ver la mítica plaza circular y sus famosos puestos de *zapiekanki* polacas.</div></div>
+<div class="event-row"><div class="time-slot">14:45</div><div class="description"><strong>Almuerzo en Pakomer</strong>Comida en Pakomer, el bar/restaurante de temática y cocina española en Cracovia.</div></div>
 <div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>Henryk Jordan Park / Park Krakowski</strong>Paseo tranquilo y relax en vuestro parque favorito de la ciudad.</div></div>
 <div class="event-row"><div class="time-slot">16:45</div><div class="description"><strong>Magia Navideña y Atardecer</strong>Vuelta hacia el centro con la noche cerrada para disfrutar a fondo del **Mercadillo Navideño** en la Plaza del Mercado y sus luces.</div></div>
 <div class="event-row"><div class="time-slot">18:00</div><div class="description"><strong>Paseo hacia la Estación</strong>Recorrido corto y directo desde la zona centro hacia la estación *Kraków Główny*.</div></div>
-<div class="event-row"><div class="time-slot">18:20</div><div class="description"><strong>Llegada a la Estación</strong>Llegada exacta con 25 minutos de margen antes de la salida del tren.</div></div>
-<div class="event-row"><div class="time-slot">18:45</div><div class="description"><strong>Tren de Regreso a Varsovia <span class="tag confirmed">RESERVA COMPLETA</span></strong>Trayecto de vuelta directo desde Cracovia hacia Varsovia.</div></div>
-</section>
-</div>
-
-<script>
-// Mostrar la pantalla de inicio
-function showSelector() {
-document.getElementById('selector-screen').style.display = 'flex';
-document.getElementById('nav-budapest').style.display = 'none';
-document.getElementById('nav-varsovia').style.display = 'none';
-document.getElementById('main-header').style.display = 'none';
-document.getElementById('container-budapest').style.display = 'none';
-document.getElementById('container-varsovia').style.display = 'none';
-}
-
-// Cargar la ciudad seleccionada y solucionar el problema del fondo gris
-function loadCity(city) {
-document.getElementById('selector-screen').style.display = 'none';
-document.getElementById('main-header').style.display = 'flex';
-const header = document.getElementById('main-header');
-const title = document.getElementById('header-title');
-const subtitle = document.getElementById('header-subtitle');
-
-if (city === 'budapest') {
-document.getElementById('nav-budapest').style.display = 'flex';
-document.getElementById('container-budapest').style.display = 'block';
-
-header.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1577366773073-a57cdf7132cb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')";
-title.innerText = "BUDAPEST";
-subtitle.innerText = "30 Noviembre - 3 Diciembre";
-
-showDay('b-dia1', 'budapest');
-} else {
-document.getElementById('nav-varsovia').style.display = 'flex';
-document.getElementById('container-varsovia').style.display = 'block';
-
-header.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607427293702-036933bbf746?auto=format&fit=crop&w=1920&q=80')";
-title.innerText = "VARSOVIA";
-subtitle.innerText = "3 Diciembre - 5 Diciembre";
-
-showDay('v-dia1', 'varsovia');
-}
-}
-
-// Mostrar un día específico y actualizar menú
-function showDay(dayId, city) {
-const container = document.getElementById(`container-${city}`);
-const cards = container.querySelectorAll('.day-card');
-cards.forEach(card => card.classList.remove('is-active'));
-
-const nav = document.getElementById(`nav-${city}`);
-const links = nav.querySelectorAll('a:not(.btn-back)');
-links.forEach(link => link.classList.remove('active'));
-
-document.getElementById(dayId).classList.add('is-active');
-if (nav.querySelector(`.nav-${dayId}`)) {
-nav.querySelector(`.nav-${dayId}`).classList.add('active');
-}
-
-window.scrollTo(0, 0);
-}
-
-// ----- LÓGICA DEL POP-UP Y CONTRASEÑA -----
-let currentSurpriseId = "";
-
-function openPasswordModal(planId) {
-currentSurpriseId = planId;
-const modal = document.getElementById('password-modal');
-const input = document.getElementById('secret-password');
-const errorMsg = document.getElementById('modal-error');
-
-input.value = "";
-input.classList.remove('shake');
-errorMsg.style.display = 'none';
-
-modal.style.display = 'flex';
-setTimeout(() => input.focus(), 100);
-}
-
-function closeModal() {
-document.getElementById('password-modal').style.display = 'none';
-}
-
-function checkEnter(event) {
-if (event.key === "Enter") {
-verifyPassword();
-}
-}
-
-function verifyPassword() {
-const input = document.getElementById('secret-password');
-const errorMsg = document.getElementById('modal-error');
-
-if (input.value.trim().toUpperCase() === "MONITO") {
-closeModal();
-const containerReal = document.getElementById(`surprise-${currentSurpriseId}`);
-containerReal.querySelector('.surprise-locked').style.display = 'none';
-containerReal.querySelector('.surprise-unlocked').style.display = 'block';
-} else {
-errorMsg.style.display = 'block';
-input.classList.remove('shake');
-void input.offsetWidth;
-input.classList.add('shake');
-input.value = "";
-input.focus();
-}
-}
-</script>
-
-</body>
-</html>
+<div class="event-row"><div class="time-slot">18:20</div><div class="
