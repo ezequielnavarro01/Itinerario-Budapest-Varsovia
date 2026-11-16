@@ -508,4 +508,127 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">16:00</div><div class="description"><strong>Henryk Jordan Park / Park Krakowski</strong>Paseo tranquilo y relax en vuestro parque favorito de la ciudad.</div></div>
 <div class="event-row"><div class="time-slot">16:45</div><div class="description"><strong>Magia Navideña y Atardecer</strong>Vuelta hacia el centro con la noche cerrada para disfrutar a fondo del **Mercadillo Navideño** en la Plaza del Mercado y sus luces.</div></div>
 <div class="event-row"><div class="time-slot">18:00</div><div class="description"><strong>Paseo hacia la Estación</strong>Recorrido corto y directo desde la zona centro hacia la estación *Kraków Główny*.</div></div>
-<div class="event-row"><div class="time-slot">18:20</div><div class="
+<div class="event-row"><div class="time-slot">18:20</div><div class="description"><strong>Llegada a la Estación</strong>Llegada exacta con 25 minutos de margen antes de la salida del tren.</div></div>
+<div class="event-row"><div class="time-slot">18:45</div><div class="description"><strong>Tren de Regreso a Varsovia <span class="tag confirmed">RESERVA COMPLETA</span></strong>Trayecto de vuelta directo desde Cracovia hacia Varsovia.</div></div>
+</section>
+
+<!-- APARTADO BARES Y CAFETERÍAS VARSOVIA -->
+<section class="day-card" id="v-cafes">
+<div class="day-header">
+<h2 class="day-title">Bares y Cafeterías - Varsovia</h2>
+<span class="wake-up">Pizzas, bares de leche tradicionales y opciones de comida rápida local</span>
+</div>
+<div class="event-row"><div class="time-slot">PIZZA</div><div class="description"><strong>Pizzatopia</strong>Cadena muy popular de pizzas personalizadas al momento, rápidas y con ingredientes frescos y variados a tu gusto.</div></div>
+<div class="event-row"><div class="time-slot">BAR LECHE</div><div class="description"><strong>Bar Mleczny Śmietanka Towarzyska</strong>Auténtico bar de leche tradicional polaco donde disfrutar de platos caseros económicos, raciones generosas y ambiente auténtico.</div></div>
+<div class="event-row"><div class="time-slot">BAR LECHE</div><div class="description"><strong>Bar Bambino</strong>Clásico y muy querido bar de leche en el centro de Varsovia, perfecto para probar comida tradicional polaca a precios populares.</div></div>
+</section>
+
+</div>
+
+<script>
+// Mostrar la pantalla de inicio
+function showSelector() {
+document.getElementById('selector-screen').style.display = 'flex';
+document.getElementById('nav-budapest').style.display = 'none';
+document.getElementById('nav-varsovia').style.display = 'none';
+document.getElementById('main-header').style.display = 'none';
+document.getElementById('container-budapest').style.display = 'none';
+document.getElementById('container-varsovia').style.display = 'none';
+}
+
+// Cargar la ciudad seleccionada y solucionar el problema del fondo gris
+function loadCity(city) {
+document.getElementById('selector-screen').style.display = 'none';
+document.getElementById('main-header').style.display = 'flex';
+const header = document.getElementById('main-header');
+const title = document.getElementById('header-title');
+const subtitle = document.getElementById('header-subtitle');
+
+if (city === 'budapest') {
+document.getElementById('nav-budapest').style.display = 'flex';
+document.getElementById('container-budapest').style.display = 'block';
+
+header.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1577366773073-a57cdf7132cb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')";
+title.innerText = "BUDAPEST";
+subtitle.innerText = "30 Noviembre - 3 Diciembre";
+
+showDay('b-dia1', 'budapest');
+} else {
+document.getElementById('nav-varsovia').style.display = 'flex';
+document.getElementById('container-varsovia').style.display = 'block';
+
+header.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607427293702-036933bbf746?auto=format&fit=crop&w=1920&q=80')";
+title.innerText = "VARSOVIA";
+subtitle.innerText = "3 Diciembre - 5 Diciembre";
+
+showDay('v-dia1', 'varsovia');
+}
+}
+
+// Mostrar un día específico y actualizar menú
+function showDay(dayId, city) {
+const container = document.getElementById(`container-${city}`);
+const cards = container.querySelectorAll('.day-card');
+cards.forEach(card => card.classList.remove('is-active'));
+
+const nav = document.getElementById(`nav-${city}`);
+const links = nav.querySelectorAll('a:not(.btn-back)');
+links.forEach(link => link.classList.remove('active'));
+
+document.getElementById(dayId).classList.add('is-active');
+if (nav.querySelector(`.nav-${dayId}`)) {
+nav.querySelector(`.nav-${dayId}`).classList.add('active');
+}
+
+window.scrollTo(0, 0);
+}
+
+// ----- LÓGICA DEL POP-UP Y CONTRASEÑA -----
+let currentSurpriseId = "";
+
+function openPasswordModal(planId) {
+currentSurpriseId = planId;
+const modal = document.getElementById('password-modal');
+const input = document.getElementById('secret-password');
+const errorMsg = document.getElementById('modal-error');
+
+input.value = "";
+input.classList.remove('shake');
+errorMsg.style.display = 'none';
+
+modal.style.display = 'flex';
+setTimeout(() => input.focus(), 100);
+}
+
+function closeModal() {
+document.getElementById('password-modal').style.display = 'none';
+}
+
+function checkEnter(event) {
+if (event.key === "Enter") {
+verifyPassword();
+}
+}
+
+function verifyPassword() {
+const input = document.getElementById('secret-password');
+const errorMsg = document.getElementById('modal-error');
+
+if (input.value.trim().toUpperCase() === "MONITO") {
+closeModal();
+const containerReal = document.getElementById(`surprise-${currentSurpriseId}`);
+containerReal.querySelector('.surprise-locked').style.display = 'none';
+containerReal.querySelector('.surprise-unlocked').style.display = 'block';
+} else {
+errorMsg.style.display = 'block';
+input.classList.remove('shake');
+void input.offsetWidth;
+input.classList.add('shake');
+input.value = "";
+input.focus();
+}
+}
+</script>
+
+</body>
+</html>
