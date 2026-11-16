@@ -95,11 +95,25 @@ border-bottom: 2px solid var(--soft-gray); margin-bottom: 25px; padding-bottom: 
 .day-title { color: var(--primary-color); font-size: 1.8rem; }
 .wake-up { font-size: 0.95rem; color: #777; font-weight: 500; }
 
-.event-row { display: flex; margin-bottom: 20px; padding-left: 15px; border-left: 3px solid #d9dfec; }
+.event-row { display: flex; margin-bottom: 20px; padding-left: 15px; border-left: 3px solid #d9dfec; align-items: center; }
 .time-slot { min-width: 90px; font-weight: 800; color: var(--accent-color); font-size: 1.1rem; }
 .description { flex: 1; font-size: 1rem; line-height: 1.5; color: #444; }
 .description strong { color: var(--primary-color); display: block; margin-bottom: 4px; font-size: 1.15rem; }
 .price-info { font-size: 0.85rem; color: #666; margin-top: 4px; display: block; font-style: italic; }
+
+/* Estilos para los checkboxes de Kolodkos */
+.kolodko-checkbox {
+width: 22px;
+height: 22px;
+cursor: pointer;
+accent-color: var(--accent-color);
+margin-right: 15px;
+}
+
+.kolodko-item input[type="checkbox"]:checked + div strong {
+text-decoration: line-through;
+color: #888 !important;
+}
 
 .tag { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; margin-left: 8px; vertical-align: middle; }
 .ticket { background: var(--ticket-bg); color: var(--ticket-text); border: 1px solid #ffb3b3; }
@@ -229,6 +243,7 @@ margin-top: -10px; margin-bottom: 15px; display: none; font-weight: bold;
 <a onclick="showDay('b-dia2', 'budapest')" class="nav-b-dia2">MARTES 1</a>
 <a onclick="showDay('b-dia3', 'budapest')" class="nav-b-dia3">MIÉRCOLES 2</a>
 <a onclick="showDay('b-cafes', 'budapest')" class="nav-b-cafes">BARES & CAFÉS</a>
+<a onclick="showDay('b-kolodkos', 'budapest')" class="nav-b-kolodkos">KOLODKOS</a>
 <a onclick="showDay('b-alt', 'budapest')" class="nav-b-alt">PLANES EXTRA</a>
 </nav>
 
@@ -355,6 +370,62 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">CHIMNEY</div><div class="description"><strong>Kürtissimo: Artisan Chimney & Gelato House</strong>Especialistas en tradicionales *kürtőskalács* combinados con helados y otras delicias artesanales.</div></div>
 <div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>Begi Coffee & Cake</strong>Cafetería acogedora ideal para una parada de café de especialidad y repostería en el centro de Pest.</div></div>
 <div class="event-row"><div class="time-slot">VISTAS</div><div class="description"><strong>Bálna (El Centro de la Ballena)</strong>Impresionante centro cultural y comercial a orillas del Danubio con opciones de restauración y cafeterías.</div></div>
+</section>
+
+<!-- APARTADO KOLODKOS -->
+<section class="day-card" id="b-kolodkos">
+<div class="day-header">
+<h2 class="day-title">Lista de Miniestatuas (Kolodkos)</h2>
+<span class="wake-up">Marca cada figurita a medida que la encuentres</span>
+</div>
+
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#1</div><div class="description"><strong>Főkukac</strong>Bem rakpart 15</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#2</div><div class="description"><strong>Mekk Elek</strong>Széll Kálmán tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#3</div><div class="description"><strong>El Tanque Triste</strong>Bem rakpart 26</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#4</div><div class="description"><strong>Cubo de Rubik</strong>Bem rakpart (frente al Parlamento)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#5</div><div class="description"><strong>Emperador Francisco José I</strong>Szabadság híd (Puente de la Libertad)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#6</div><div class="description"><strong>Yoda</strong>Szent Gellért tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#7</div><div class="description"><strong>Rana Kermit (Breki)</strong>Szabadság tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#8</div><div class="description"><strong>Garfield</strong>István utca 2</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#9</div><div class="description"><strong>Drácula</strong>Vajdahunyad sétány (Parque de la Ciudad)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#10</div><div class="description"><strong>Osito de Mr. Bean (Teddy)</strong>Harmincad utca 6</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#11</div><div class="description"><strong>Conejo de orejas ajedrezadas</strong>Szent György tér (estación superior del funicular)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#12</div><div class="description"><strong>Lisa Simpson</strong>Jászai Mari tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#13</div><div class="description"><strong>El Buzo con la llave</strong>Dohány utca / Osvát utca</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#14</div><div class="description"><strong>Theodor Herzl</strong>Dohány utca 2</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#15</div><div class="description"><strong>Ardilla muerta</strong>Falk Miksa utca</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#16</div><div class="description"><strong>Astronauta (Rover lunar)</strong>Hold utca</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#17</div><div class="description"><strong>Rezső Seress</strong>Akácfa utca 57</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#18</div><div class="description"><strong>Süsü el dragón</strong>Szabadság tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#19</div><div class="description"><strong>El coche de los 14 quilates</strong>Hevesi Sándor tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#20</div><div class="description"><strong>El Arca de Noé</strong>Bethlen Gábor tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#21</div><div class="description"><strong>El perro con globo (Libido)</strong>Vigadó tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#22</div><div class="description"><strong>Harry Houdini</strong>Király utca 11</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#23</div><div class="description"><strong>El mini Trabant</strong>Baross tér (Estación de Keleti)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#24</div><div class="description"><strong>Conejo meditador</strong>Margitsziget (Isla Margarita)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#25</div><div class="description"><strong>Antal Dreher</strong>Jászberényi út 7-11</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#26</div><div class="description"><strong>Feria canina en Buda</strong>Batthyány utca</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#27</div><div class="description"><strong>Auriculares (Füles)</strong>Komor Marcell utca 1 (MÜPA)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#28</div><div class="description"><strong>Hanna Szenes</strong>Szenes Hanna park</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#29</div><div class="description"><strong>Ushanka (Gorra rusa)</strong>Szabadság tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#30</div><div class="description"><strong>Zsigmondy Vilmos</strong>Állatkerti körút 9 (entrada de los Baños Széchenyi)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#31</div><div class="description"><strong>The flutist (Török Ádám)</strong>Bem rakpart 8</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#32</div><div class="description"><strong>Vahur</strong>Dob utca / Holló utca (Gojszdu Udvar / Distrito VII)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#33</div><div class="description"><strong>Micimackó (Winnie the Pooh)</strong>Damjanich utca 27</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#34</div><div class="description"><strong>Üzenet (Orosz hadihajó) (Buque de guerra ruso)</strong>Moszkva sétány (junto al Puente Árpád)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#35</div><div class="description"><strong>Skála Kópé</strong>Nyugati tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#36</div><div class="description"><strong>Üldözési mániából gyógyuló nyúl (Conejo curándose de paranoia)</strong>Hermina út (junto al Hospital Bethesda)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#37</div><div class="description"><strong>Piszkos Fred (Piszok Alfréd)</strong>Id. Antall József rakpart</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#38</div><div class="description"><strong>Paddington és Mása medvéje</strong>Medve utca</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#39</div><div class="description"><strong>Szurikáta (Suricata)</strong>Bókay János utca 51-53</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#40</div><div class="description"><strong>Lábnyom (Huella / Cazador Janty)</strong>Neumann János utca 3</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#41</div><div class="description"><strong>Pénzfújó (Soplador de dinero)</strong>Hold utca 1</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#42</div><div class="description"><strong>Leo és Fred</strong>Kopaszi-gát</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#43</div><div class="description"><strong>"Nincs kompót" (No hay compota)</strong>Várkert rakpart (Várkert Bazár)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#44</div><div class="description"><strong>Dr. Bubó</strong>Bethesda utca / Hermina út</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#45</div><div class="description"><strong>Lecsó gastro rat</strong>Döbrentei tér (Puente de Isabel)</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#46</div><div class="description"><strong>The Axe (El Hacha, sustituyó a la Ushanka)</strong>Szabadság tér</div></div>
+<div class="event-row kolodko-item"><input type="checkbox" class="kolodko-checkbox"><div class="time-slot">#47</div><div class="description"><strong>Pinocchio</strong>Széchenyi István tér</div></div>
 </section>
 
 <!-- PLANES ALTERNATIVOS / EXTRA BUDAPEST -->
