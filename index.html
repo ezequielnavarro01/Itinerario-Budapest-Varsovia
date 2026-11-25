@@ -17,6 +17,10 @@
 --confirmed-text: #155724;
 --pending-bg: #fff3cd;
 --pending-text: #856404;
+--warsaw-bg: #e0fbfc;
+--warsaw-text: #005f73;
+--krakow-bg: #f3e5f5;
+--krakow-text: #6a1b9a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
@@ -119,6 +123,8 @@ color: #888 !important;
 .ticket { background: var(--ticket-bg); color: var(--ticket-text); border: 1px solid #ffb3b3; }
 .confirmed { background: var(--confirmed-bg); color: var(--confirmed-text); border: 1px solid #c3e6cb; }
 .pending { background: var(--pending-bg); color: var(--pending-text); border: 1px solid #ffeeba; }
+.city-warsaw { background: var(--warsaw-bg); color: var(--warsaw-text); border: 1px solid #90e0ef; }
+.city-krakow { background: var(--krakow-bg); color: var(--krakow-text); border: 1px solid #ce93d8; }
 
 /* Estilos para el plan sorpresa oculto */
 .surprise-locked {
@@ -379,6 +385,7 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>Rojt és Bojt</strong>Encantadora cafetería artesanal con decoración vintage y acogedora en Buda, perfecta para desayunar o tomar un café tranquilo con tarta casera.</div></div>
 <div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>Begi Coffee & Cake</strong>Cafetería acogedora ideal para una parada de café de especialidad y repostería en el centro de Pest.</div></div>
 <div class="event-row"><div class="time-slot">CAFÉ & BAR</div><div class="description"><strong>Lumen</strong>Acogedora cafetería y bar cultural en el barrio del Palacio (Mikszáth Kálmán tér), ideal para tomar un café de especialidad, algo de comer o una copa tranquila.</div></div>
+<div class="event-row"><div class="time-slot">BURGER</div><div class="description"><strong>Buddy Burger</strong>Hamburguesería artesanal muy popular en Budapest con burgers jugosas, patatas caseras y buen ambiente para una comida o cena informal.</div></div>
 <div class="event-row"><div class="time-slot">BURGER</div><div class="description"><strong>REBEL Burgers</strong>Hamburguesería artesanal muy bien valorada en Budapest para una comida o cena contundente.</div></div>
 <div class="event-row"><div class="time-slot">HUMMUS</div><div class="description"><strong>Csicseri</strong>Local informal especializado en hummus casero, falafel y platos de Oriente Medio rápidos, sabrosos y económicos en el centro.</div></div>
 <div class="event-row"><div class="time-slot">BRUNCH</div><div class="description"><strong>Electric Toast</strong>Local moderno especializado en tostadas gourmet, sándwiches calientes y opciones ideales para desayuno tardío o merienda salada.</div></div>
@@ -524,26 +531,27 @@ Museo inmersivo de arte digital y luces sensoriales. ¡Un laberinto visual incre
 <div class="event-row"><div class="time-slot">18:45</div><div class="description"><strong>Tren de Regreso a Varsovia <span class="tag confirmed">RESERVA COMPLETA</span></strong>Trayecto de vuelta directo desde Cracovia hacia Varsovia.</div></div>
 </section>
 
-<!-- APARTADO BARES Y CAFETERÍAS VARSOVIA -->
+<!-- APARTADO BARES Y CAFETERÍAS VARSOVIA Y CRACOVIA -->
 <section class="day-card" id="v-cafes">
 <div class="day-header">
-<h2 class="day-title">Bares y Cafeterías - Varsovia</h2>
+<h2 class="day-title">Bares y Cafeterías - Varsovia y Cracovia</h2>
 <span class="wake-up">Pizzas, hamburguesas, panaderías, chocolaterías y rincones de merienda</span>
 </div>
-<div class="event-row"><div class="time-slot">PIZZA</div><div class="description"><strong>Nonna Pizzeria</strong>Pizzería de masa madre excelente y estilo napolitano en Varsovia.</div></div>
-<div class="event-row"><div class="time-slot">BURGER</div><div class="description"><strong>Smashny Burger</strong>Local especializado en deliciosas smash burgers de estilo moderno.</div></div>
-<div class="event-row"><div class="time-slot">ZONA OCIO</div><div class="description"><strong>Fábrica Norblin (Fabryka Norblina)</strong>Antiguo complejo industrial rehabilitado con food halls, cafeterías y ambiente increíble.</div></div>
-<div class="event-row"><div class="time-slot">MERIENDA</div><div class="description"><strong>Joe & Joy</strong>Cafetería muy acogedora ideal para merendar, tomar un café o un dulce en un entorno agradable.</div></div>
-<div class="event-row"><div class="time-slot">DULCE</div><div class="description"><strong>Dobra Pączkarnia (Varsovia)</strong>Famosa pastelería artesanal de los tradicionales *pączki* (berlinesas polacas) recién hechos y rellenos.</div></div>
-<div class="event-row"><div class="time-slot">BAKERY</div><div class="description"><strong>Canela Bakery</strong>Panadería artesanal y obrador de calidad con excelentes opciones de bollería y pan.</div></div>
-<div class="event-row"><div class="time-slot">PANADERÍA</div><div class="description"><strong>Lubaszka Panadería</strong>Cadena clásica de panaderías tradicionales polacas perfecta para comprar algo rápido de bollería recién horneada.</div></div>
-<div class="event-row"><div class="time-slot">BISTRO</div><div class="description"><strong>Trou Madame</strong>Encantador café-bistro rodeado de zonas verdes, perfecto para un descanso tranquilo.</div></div>
-<div class="event-row"><div class="time-slot">ITALIANO</div><div class="description"><strong>Va Bene Centro</strong>Cafetería/gelateria italiana en el centro de Varsovia con dulces, café y helados artesanales de primer nivel.</div></div>
-<div class="event-row"><div class="time-slot">CHOCOLATE</div><div class="description"><strong>E. Wedel</strong>La emblemática marca histórica de chocolate polaco. Imprescindible para pedir un chocolate caliente denso o sus dulces.</div></div>
-<div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>KAWarszawa</strong>Cafetería de especialidad muy querida y con un concepto social muy bonito en la ciudad.</div></div>
-<div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>Cava</strong>Cafetería elegante con una estupenda selección de postres, tartas y café.</div></div>
-<div class="event-row"><div class="time-slot">BAR & CAFE</div><div class="description"><strong>Bibi Cafe y Bar</strong>Espacio acogedor que combina café de especialidad con opciones de picoteo y ambiente de bar moderno.</div></div>
-<div class="event-row"><div class="time-slot">CULTURE</div><div class="description"><strong>Cafe Kafka</strong>Café cultural muy animado, tradicionalmente punto de encuentro estudiantil y bohemio junto al campus y el centro.</div></div>
+<div class="event-row"><div class="time-slot">PIZZA</div><div class="description"><strong>Nonna Pizzeria <span class="tag city-warsaw">VARSOVIA</span></strong>Pizzería de masa madre excelente y estilo napolitano en Varsovia.</div></div>
+<div class="event-row"><div class="time-slot">BURGER</div><div class="description"><strong>Smashny Burger <span class="tag city-warsaw">VARSOVIA</span></strong>Local especializado en deliciosas smash burgers de estilo moderno.</div></div>
+<div class="event-row"><div class="time-slot">ZONA OCIO</div><div class="description"><strong>Fábrica Norblin (Fabryka Norblina) <span class="tag city-warsaw">VARSOVIA</span></strong>Antiguo complejo industrial rehabilitado con food halls, cafeterías y ambiente increíble.</div></div>
+<div class="event-row"><div class="time-slot">MERIENDA</div><div class="description"><strong>Joe & Joy <span class="tag city-warsaw">VARSOVIA</span></strong>Cafetería muy acogedora ideal para merendar, tomar un café o un dulce en un entorno agradable.</div></div>
+<div class="event-row"><div class="time-slot">DULCE</div><div class="description"><strong>Dobra Pączkarnia <span class="tag city-warsaw">VARSOVIA</span></strong>Famosa pastelería artesanal de los tradicionales *pączki* (berlinesas polacas) recién hechos y rellenos (en ul. Nowy Świat 28).</div></div>
+<div class="event-row"><div class="time-slot">BAKERY</div><div class="description"><strong>Canela Bakery <span class="tag city-warsaw">VARSOVIA</span></strong>Panadería artesanal y obrador de calidad con excelentes opciones de bollería y pan.</div></div>
+<div class="event-row"><div class="time-slot">PANADERÍA</div><div class="description"><strong>Lubaszka Panadería <span class="tag city-warsaw">VARSOVIA</span></strong>Cadena clásica de panaderías tradicionales polacas perfecta para comprar algo rápido de bollería recién horneada.</div></div>
+<div class="event-row"><div class="time-slot">BISTRO</div><div class="description"><strong>Trou Madame <span class="tag city-warsaw">VARSOVIA</span></strong>Encantador café-bistro rodeado de zonas verdes, perfecto para un descanso tranquilo.</div></div>
+<div class="event-row"><div class="time-slot">ITALIANO</div><div class="description"><strong>Va Bene Centro <span class="tag city-warsaw">VARSOVIA</span></strong>Cafetería/gelateria italiana en el centro de Varsovia con dulces, café y helados artesanales de primer nivel.</div></div>
+<div class="event-row"><div class="time-slot">CHOCOLATE</div><div class="description"><strong>E. Wedel <span class="tag city-warsaw">VARSOVIA</span></strong>La emblemática marca histórica de chocolate polaco. Imprescindible para pedir un chocolate caliente denso o sus dulces.</div></div>
+<div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>KAWarszawa <span class="tag city-warsaw">VARSOVIA</span></strong>Cafetería de especialidad muy querida y con un concepto social muy bonito en la ciudad.</div></div>
+<div class="event-row"><div class="time-slot">CAFÉ</div><div class="description"><strong>Cava <span class="tag city-warsaw">VARSOVIA</span></strong>Cafetería elegante con una estupenda selección de postres, tartas y café.</div></div>
+<div class="event-row"><div class="time-slot">BAR & CAFE</div><div class="description"><strong>Bibi Cafe y Bar <span class="tag city-warsaw">VARSOVIA</span></strong>Espacio acogedor que combina café de especialidad con opciones de picoteo y ambiente de bar moderno.</div></div>
+<div class="event-row"><div class="time-slot">CULTURE</div><div class="description"><strong>Cafe Kafka <span class="tag city-warsaw">VARSOVIA</span></strong>Café cultural muy animado junto al campus y Powiśle (ul. Oboźna 3), ideal para desayunar, tomar café o tartas caseras.</div></div>
+<div class="event-row"><div class="time-slot">DULCE</div><div class="description"><strong>Dobra Pączkarnia <span class="tag city-krakow">CRACOVIA</span></strong>Famosa pastelería artesanal ideal para desayunar o merendar en Cracovia (ul. Floriańska 24 o ul. Grodzka 5) unos auténticos *pączki* recién hechos.</div></div>
 </section>
 
 </div>
